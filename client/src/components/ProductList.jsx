@@ -14,11 +14,8 @@ const ProductList = () => {
    dispatch(loadProducts());
  }, [dispatch]);
 
- console.log('Current Category:', category);
- console.log('Current Sort By:', sortBy);
-
- const filteredProducts = category === 'all' || category === 'Все'
-   ? items
+ const filteredProducts = category === 'all' 
+   ? items 
    : items.filter((product) => product.category === category);
 
  const searchedProducts = filteredProducts.filter((product) =>
@@ -31,8 +28,6 @@ const ProductList = () => {
    if (sortBy === 'rating') return b.rating - a.rating;
    return 0;
  });
-
- console.log('Sorted Products:', sortedProducts); // Correctly placed after sortedProducts definition
 
  if (status === 'loading') return <div>Loading...</div>;
  if (status === 'failed') return <div>Error loading products.</div>;

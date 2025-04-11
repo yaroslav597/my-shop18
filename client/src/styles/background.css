@@ -1,3 +1,5 @@
 body {
-  background-color: #121212; /* Dark background for dark mode */
+  background: url('/assets/FH.png') center/cover no-repeat, 
+              linear-gradient(135deg, #e6f7ff 0%, #bbdefb 100%);
+  min-height: 100vh;
 }

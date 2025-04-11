@@ -1,21 +1,22 @@
 import React, { useContext, useState } from 'react';
+import './styles/background-fallback.css';
 import { Container, Typography, Grid, IconButton, useTheme, Button, Paper } from '@mui/material';
-import UserInfoPopup from './components/UserInfoPopup'; // Import UserInfoPopup
+import UserInfoPopup from './components/UserInfoPopup';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import ProductList from './components/ProductList';
 import Cart from './components/Cart';
 import AuthPage from './pages/AuthPage';
-import LoginButton from './components/LoginButton'; // Re-import LoginButton
+import LoginButton from './components/LoginButton';
 import { ThemeContext } from './context/ThemeContext';
 
 function App() {
   const theme = useTheme();
   const { toggleTheme } = useContext(ThemeContext);
-  const [userInfoPopupOpen, setUserInfoPopupOpen] = useState(false); // State for UserInfoPopup
-  const [user, setUser] = useState({ name: 'User Name', email: 'user@example.com' }); // Example user data
-  const [orderHistory, setOrderHistory] = useState([]); // Example order history
+  const [userInfoPopupOpen, setUserInfoPopupOpen] = useState(false);
+  const [user, setUser] = useState({ name: 'User Name', email: 'user@example.com' });
+  const [orderHistory, setOrderHistory] = useState([]);
 
   return (
     <Router>
@@ -25,22 +26,32 @@ function App() {
           mb: 4,
           textAlign: 'center',
           background: theme.palette.mode === 'dark' 
-            ? 'linear-gradient(145deg, #1a237e, #283593)' 
-            : 'linear-gradient(145deg, #3f51b5, #5c6bc0)',
+            ? 'linear-gradient(145deg, #0a3d62, #1e3799)' 
+            : 'linear-gradient(145deg, #1e88e5, #0d47a1)',
           color: 'white',
-          borderRadius: 0, // Remove border radius to stretch across the screen
+          borderRadius: 0,
           boxShadow: theme.shadows[10],
-          width: '100%' // Ensure it spans the full width
+          width: '100%',
+          backgroundImage: `
+            linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+            url("https://cdn.corenexis.com/view/?img=d/ap11/5BTcdQ.png")
+          `,
+          backgroundSize: 'cover',
+          backgroundRepeat: 'no-repeat',
+          backgroundAttachment: 'fixed',
+          backgroundPosition: 'center',
+          backgroundColor: '#0d47a1' // Fallback цвет
         }}>
           <Typography variant="h2" component="h1" sx={{ 
             fontWeight: 700,
             letterSpacing: 1,
-            textTransform: 'uppercase'
+            textTransform: 'uppercase',
+            textShadow: '2px 2px 4px rgba(0,0,0,0.5)'
           }}>
-            MYtoolsShop
+            Fish Hunter
           </Typography>
-          <Typography variant="subtitle1" sx={{ mt: 1, opacity: 0.9 }}>
-            Магазин качественных комплектующих
+          <Typography variant="subtitle1" sx={{ mt: 1, opacity: 0.9, textShadow: '1px 1px 2px rgba(0,0,0,0.5)' }}>
+            Профессиональные снасти для настоящих охотников
           </Typography>
         </Paper>
         <IconButton 
@@ -49,20 +60,16 @@ function App() {
         >
           {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
         </IconButton>
-        <LoginButton /> {/* Re-add LoginButton */}
+        <LoginButton />
         
-
-        {/* Profile Button */}
         <Button 
           variant="contained" 
-          size="small" // Set button size to small
-          onClick={() => setUserInfoPopupOpen(true)} // Button to open UserInfoPopup
-          sx={{ position: 'absolute', top: 70, left: 16 }} // Move Profile button slightly higher
+          size="small"
+          onClick={() => setUserInfoPopupOpen(true)}
+          sx={{ position: 'absolute', top: 70, left: 16 }}
         >
-          Профиль {/* Updated button text */}
+          Профиль
         </Button>
-        
-
         
         <Routes>
           <Route path="/" element={
@@ -78,7 +85,6 @@ function App() {
           <Route path="/auth" element={<AuthPage />} />
         </Routes>
 
-        {/* UserInfoPopup Component */}
         <UserInfoPopup 
           open={userInfoPopupOpen} 
           onClose={() => setUserInfoPopupOpen(false)} 
