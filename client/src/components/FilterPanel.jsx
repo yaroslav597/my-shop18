@@ -4,11 +4,14 @@ import { Button, ButtonGroup, Paper, Typography } from '@mui/material';
 const FilterPanel = ({ onFilterChange }) => {
  const categories = [
    { label: 'Все', value: 'all' },
-   { label: 'Удилища', value: 'удилища' },
-   { label: 'Катушки', value: 'катушки' },
-   { label: 'Приманки', value: 'приманки' },
-   { label: 'Лески', value: 'лески' },
- ];
+   { label: 'Удилища', value: 'rods' },
+   { label: 'Катушки', value: 'coil' },
+   { label: 'Приманки', value: 'lures' },
+   { label: 'Лески', value: 'lines' },
+ ].map(cat => ({
+   ...cat,
+   value: cat.value.toLowerCase() // Нормализуем значения категорий
+ }));
 
  return (
    <Paper elevation={3} sx={{
