@@ -9,14 +9,25 @@ const SortPanel = ({ onSortChange }) => {
  ];
  return (
  <FormControl fullWidth sx={{ my: 2 }}>
- <InputLabel>Сортировка</InputLabel>
+ <InputLabel sx={{ color: 'white' }}>Сортировка</InputLabel>
  <Select
  label="Сортировка"
  onChange={(e) => {
    console.log('Selected Sort Value:', e.target.value);
    onSortChange(e.target.value);
  }}
-
+ sx={{
+   color: 'white',
+   '& .MuiOutlinedInput-notchedOutline': {
+     borderColor: 'white'
+   },
+   '&:hover .MuiOutlinedInput-notchedOutline': {
+     borderColor: 'white'
+   },
+   '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+     borderColor: 'white'
+   }
+ }}
  defaultValue="default"
  >
  {sortOptions.map((option) => (

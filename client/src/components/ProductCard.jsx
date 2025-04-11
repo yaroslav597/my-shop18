@@ -7,14 +7,14 @@ const ProductCard = ({ product }) => {
       maxWidth: 300,
       m: 2,
       transition: 'transform 0.3s',
-      backgroundColor: (theme) => theme.palette.mode === 'dark'
-        ? 'rgba(10, 61, 98, 0.7)'
-        : 'rgba(176, 224, 255, 0.7)',
-      border: '1px solid #0d47a1',
+      backgroundColor: 'white',
+      border: '2px solid #D10000',
       borderRadius: '12px',
+      color: '#000000',
       '&:hover': {
         transform: 'scale(1.05)',
-        boxShadow: '0 0 15px rgba(13, 71, 161, 0.5)'
+        boxShadow: '0 0 15px rgba(209, 0, 0, 0.7)',
+        backgroundColor: '#f5f5f5'
       }
     }}>
       <CardMedia
@@ -41,13 +41,39 @@ const ProductCard = ({ product }) => {
           {product.price} ₽
         </Typography>
       </CardContent>
-      <Button 
-        variant="contained" 
-        fullWidth 
-        sx={{ 
-          backgroundColor: '#0d47a1',
+      <Button
+        variant="contained"
+        fullWidth
+        sx={{
+          background: 'linear-gradient(45deg, #D10000, #FF6B00)',
+          color: 'white',
+          border: '2px solid #000',
+          padding: '12px 30px',
+          fontWeight: 900,
+          textTransform: 'uppercase',
+          letterSpacing: '2px',
+          boxShadow: '0 4px 0 #000',
+          transition: 'all 0.3s',
+          position: 'relative',
+          overflow: 'hidden',
           '&:hover': {
-            backgroundColor: '#1565c0'
+            transform: 'translateY(-3px)',
+            boxShadow: '0 6px 0 #000',
+            background: 'linear-gradient(45deg, #FF0000, #FF8C00)',
+            '&::before': {
+              content: '""',
+              position: 'absolute',
+              top: '50%',
+              left: '50%',
+              width: '100%',
+              height: '100%',
+              backgroundImage: 'url(/assets/blood-drops.png)',
+              backgroundRepeat: 'no-repeat',
+              backgroundPosition: 'center',
+              backgroundSize: '80%',
+              opacity: 0.7,
+              transform: 'translate(-50%, -50%)'
+            }
           }
         }}
       >

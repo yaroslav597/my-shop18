@@ -20,27 +20,34 @@ function App() {
 
   return (
     <Router>
-      <Container>
+      <Container sx={{
+        backgroundImage: `
+          linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+          url('https://pic.rutubelist.ru/userappearance/c5/5b/c55b53d698f830963cbc73c24de0a8b7.jpeg')
+        `,
+        backgroundSize: 'cover',
+        backgroundAttachment: 'fixed',
+        backgroundPosition: 'center',
+        minHeight: '100vh',
+        p: 2
+      }}>
         <Paper elevation={6} sx={{ 
           p: 3,
           mb: 4,
           textAlign: 'center',
-          background: theme.palette.mode === 'dark' 
-            ? 'linear-gradient(145deg, #0a3d62, #1e3799)' 
-            : 'linear-gradient(145deg, #1e88e5, #0d47a1)',
+          background: '#D10000', /* Кроваво-красный цвет */
           color: 'white',
           borderRadius: 0,
           boxShadow: theme.shadows[10],
           width: '100%',
           backgroundImage: `
-            linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-            url("https://cdn.corenexis.com/view/?img=d/ap11/5BTcdQ.png")
+            linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2))
           `,
           backgroundSize: 'cover',
           backgroundRepeat: 'no-repeat',
           backgroundAttachment: 'fixed',
           backgroundPosition: 'center',
-          backgroundColor: '#0d47a1' // Fallback цвет
+          backgroundColor: '#D10000' /* Кроваво-красный fallback */
         }}>
           <Typography variant="h2" component="h1" sx={{ 
             fontWeight: 700,
@@ -66,7 +73,17 @@ function App() {
           variant="contained" 
           size="small"
           onClick={() => setUserInfoPopupOpen(true)}
-          sx={{ position: 'absolute', top: 70, left: 16 }}
+          sx={{ 
+            position: 'absolute', 
+            top: 70, 
+            left: 16,
+            backgroundColor: '#D10000',
+            color: 'white',
+            '&:hover': {
+              backgroundColor: '#B00000',
+              boxShadow: '0 0 10px rgba(209, 0, 0, 0.5)'
+            }
+          }}
         >
           Профиль
         </Button>

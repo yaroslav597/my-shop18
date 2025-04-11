@@ -15,14 +15,12 @@ const FilterPanel = ({ onFilterChange }) => {
      p: 2,
      mb: 2,
      textAlign: 'center',
-     backgroundColor: (theme) => theme.palette.mode === 'dark' 
-       ? 'rgba(10, 61, 98, 0.8)' 
-       : 'rgba(30, 136, 229, 0.8)',
-     backgroundImage: 'url("https://img.freepik.com/free-vector/fishing-pattern-background_53876-93589.jpg")',
+     backgroundColor: '#D10000',
+     backgroundImage: 'linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2))',
      backgroundSize: 'cover',
-     backgroundBlendMode: 'overlay',
-     border: '1px solid #0d47a1',
-     borderRadius: '8px'
+     border: '2px solid #000',
+     borderRadius: '8px',
+     color: 'white'
    }}>
      <Typography variant="h6" sx={{ mb: 1 }}>Категории</Typography>
      <ButtonGroup fullWidth variant="contained" sx={{ 
@@ -32,9 +30,12 @@ const FilterPanel = ({ onFilterChange }) => {
          fontWeight: 500,
          letterSpacing: 0.5,
          transition: 'all 0.3s ease',
+         backgroundColor: '#000000',
+         color: 'white',
          '&:hover': {
            transform: 'translateY(-2px)',
-           boxShadow: (theme) => theme.shadows[4]
+           boxShadow: (theme) => theme.shadows[4],
+           backgroundColor: '#1a1a1a'
          }
        }
      }}>
